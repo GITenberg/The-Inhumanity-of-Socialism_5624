@@ -1,0 +1,30 @@
+_repo: The-Inhumanity-of-Socialism_5624
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Adams, Edward F. (Edward Francis)
+    alias: Adams, Edward Francis
+    birthdate: 1839
+    deathdate: 1929
+    gutenberg_agent_id: '5099'
+    url: http://www.gutenberg.org/2009/agents/5099
+description: One might write continuously while he lived for or against socialism
+  and yet at the end of a long and misspent life have said nothing that others had
+  not said before him. Nevertheless, new generations come on and have to learn about
+  Socialism as they learn about other things, for there always have been and always
+  will be Socialists. This book does a good job at effectively demonstrating the flaws
+  of the communist theory.
+gutenberg_issued: '2004-05-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '5624'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'HX'
+- !lcsh 'Socialism'
+- GITenberg
+title: The Inhumanity of Socialism
+url: http://www.gutenberg.org/ebooks/5624
