@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: HTx6W6h20eCgfPBO4EDkiyUHvikNhjqpGzNfs0b8vpBI64NgqEevYWcPoL/zH8PQLp12wg2qKw/a03Dea2cDfsi7amZKZJ/cLT/Fz6EXci6HF1p2Wto/LpJYzIewCRR1sHZVoKLwc1YRcNyfQ82AimtY4dy+DYv4hfpbfyQViuGaZtAvgG5BfjCHm+RAsSNct+cJfJuSPJ1G+uLjhdBp1F3L3jVqH4DaeLNjWw0O0u11V0zN3wGTHpjv/7i8AkFYTk09dS70WgyC19MTyzypsBemQOoSS44WtXtRwWNeGNYlQRmh5T3lW5kABeQWarc2PMn0nk0gnr4916YIB78ui/8PzzRkXBqcdEIJ09rbTEz3xruVOhUnPqMhnSNz7iwoTUqeNSxGdFcv11kZkFhcVx9Xrl2THD/Mj2r1g2J4ZSFEH9JL5YGLt7LBcJlCanquL0vc5u8hK2B30+ecZ3ZMWh5Stf5X60Z1lH4qS+rjaGfLkIXPRCI+50AL6FjLCPJz52crIpaCAUOE1TNFHsprJ0wWV+wVJO4X7Sf1Dfc1m6l4a6rcTMJasb3P0Y1z09oWDLb2S8QKD+KXOTJCw4m9/z0Gz97vZ6ILVYuPzTurVDXlK1Lkf5nNktAmSLZbxkNEaUWCVZku5CLnuIAtHonk+EeFZYNUuap/g0TaOaTtPiI=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Inhumanity-of-Socialism_5624
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
