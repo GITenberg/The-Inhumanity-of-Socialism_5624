@@ -1,5 +1,8 @@
 _repo: The-Inhumanity-of-Socialism_5624
-_version: 0.1.0
+_version: 0.2.0
+covers:
+- cover_type: generated
+  image_path: cover.png
 creator:
   author:
     agent_name: Adams, Edward F. (Edward Francis)
@@ -14,6 +17,8 @@ description: One might write continuously while he lived for or against socialis
   Socialism as they learn about other things, for there always have been and always
   will be Socialists. This book does a good job at effectively demonstrating the flaws
   of the communist theory.
+edition_identifiers:
+  edition_id: http://www.gutenberg.org/ebooks/5624#The-Inhumanity-of-Socialism
 gutenberg_issued: '2004-05-01'
 gutenberg_type: Text
 identifiers:
